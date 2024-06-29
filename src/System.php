@@ -42,11 +42,18 @@ class System
         })->toArray();
     }
 
-    public function print(string $html, Printer $printer = null): void
+    public function print(string $html, ?Printer $printer = null): void
     {
         $this->client->post('system/print', [
             'html' => $html,
             'printer' => $printer->name ?? '',
         ]);
+    }
+
+    public function printToPDF(string $html): string
+    {
+        return $this->client->post('system/print-to-pdf', [
+            'html' => $html,
+        ])->json('result');
     }
 }

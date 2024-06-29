@@ -4,10 +4,12 @@ namespace Native\Laravel;
 
 use Illuminate\Console\Application as Artisan;
 use Illuminate\Support\Arr;
+use Native\Laravel\Commands\FreshCommand;
 use Native\Laravel\Commands\LoadPHPConfigurationCommand;
 use Native\Laravel\Commands\LoadStartupConfigurationCommand;
 use Native\Laravel\Commands\MigrateCommand;
 use Native\Laravel\Commands\MinifyApplicationCommand;
+use Native\Laravel\Commands\SeedDatabaseCommand;
 use Native\Laravel\Logging\LogWatcher;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
@@ -20,6 +22,8 @@ class NativeServiceProvider extends PackageServiceProvider
             ->name('nativephp')
             ->hasCommands([
                 MigrateCommand::class,
+                FreshCommand::class,
+                SeedDatabaseCommand::class,
                 MinifyApplicationCommand::class,
             ])
             ->hasConfigFile()
@@ -30,6 +34,10 @@ class NativeServiceProvider extends PackageServiceProvider
     public function packageRegistered()
     {
         $this->mergeConfigFrom($this->package->basePath('/../config/nativephp-internal.php'), 'nativephp-internal');
+
+        $this->app->singleton(FreshCommand::class, function ($app) {
+            return new FreshCommand($app['migrator']);
+        });
 
         $this->app->singleton(MigrateCommand::class, function ($app) {
             return new MigrateCommand($app['migrator'], $app['events']);
@@ -105,6 +113,21 @@ class NativeServiceProvider extends PackageServiceProvider
         ]]);
 
         config(['database.default' => 'nativephp']);
+    }
+
+    public function removeDatabase()
+    {
+        $databasePath = config('nativephp-internal.database_path');
+
+        if (config('app.debug')) {
+            $databasePath = database_path('nativephp.sqlite');
+
+            if (! file_exists($databasePath)) {
+                return;
+            }
+        }
+
+        unlink($databasePath);
     }
 
     protected function configureDisks(): void

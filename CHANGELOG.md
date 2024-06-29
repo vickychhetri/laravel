@@ -2,6 +2,63 @@
 
 All notable changes to `nativephp-laravel` will be documented in this file.
 
+## 0.5.2 - 2024-05-02
+
+### What's Changed
+
+* Fixes a regression introduced in 0.5.1
+
+**Full Changelog**: https://github.com/NativePHP/laravel/compare/0.5.1...0.5.2
+
+## 0.5.1 - 2024-05-02
+
+### What's Changed
+
+* Add a default `NATIVEPHP_APP_ID` to fix #284
+* Fix for #175 `native:migrate:fresh` command @me-shaon in https://github.com/NativePHP/laravel/pull/198
+* Add hide window functionality by @braceyourself in https://github.com/NativePHP/laravel/pull/144
+* Update Tests workflow by @milwad-dev in https://github.com/NativePHP/laravel/pull/265
+* Bump ramsey/composer-install from 2 to 3 by @dependabot in https://github.com/NativePHP/laravel/pull/255
+* Bump dependabot/fetch-metadata from 1.6.0 to 2.0.0 by @dependabot in https://github.com/NativePHP/laravel/pull/260
+* Bump aglipanci/laravel-pint-action from 2.3.1 to 2.4 by @dependabot in https://github.com/NativePHP/laravel/pull/268
+* Bump dependabot/fetch-metadata from 2.0.0 to 2.1.0 by @dependabot in https://github.com/NativePHP/laravel/pull/275
+
+### New Contributors
+
+* @braceyourself made their first contribution in https://github.com/NativePHP/laravel/pull/144
+
+**Full Changelog**: https://github.com/NativePHP/laravel/compare/0.5.0...0.6.0
+
+## 0.5.0 - 2024-04-01
+
+### What's Changed
+
+* Add Laravel 11 support by @meliani in https://github.com/NativePHP/laravel/pull/262
+* Add printToPDF function by @basst85 in https://github.com/NativePHP/laravel/pull/104
+* Add method to update an existing context-menu of the menu bar by @bbredewold in https://github.com/NativePHP/laravel/pull/108
+* Add required config for using GitHub as an updater provider by @danjohnson95 in https://github.com/NativePHP/laravel/pull/189
+* Add ability to exclude files and entire folders from built application by @nexxai in https://github.com/NativePHP/laravel/pull/165
+* Add ability to use string events by @LukeTowers in https://github.com/NativePHP/laravel/pull/67
+* Fix 'native:db:seed' command not working by @me-shaon in https://github.com/NativePHP/laravel/pull/199
+* Fix an issue that prevented setting the position on open windows by @curtisblackwell in https://github.com/NativePHP/laravel/pull/215
+* Fix PHP Fatal Error deleteDirectoryRecursive function in MinifyApplicationCommand by @LunashaGit in https://github.com/NativePHP/laravel/pull/249
+* Bump actions/checkout from 3 to 4 by @dependabot in https://github.com/NativePHP/laravel/pull/208
+* Bump stefanzweifel/git-auto-commit-action from 4 to 5 by @dependabot in https://github.com/NativePHP/laravel/pull/217
+* Bump aglipanci/laravel-pint-action from 2.3.0 to 2.3.1 by @dependabot in https://github.com/NativePHP/laravel/pull/240
+
+### New Contributors
+
+* @me-shaon made their first contribution in https://github.com/NativePHP/laravel/pull/199
+* @bbredewold made their first contribution in https://github.com/NativePHP/laravel/pull/108
+* @danjohnson95 made their first contribution in https://github.com/NativePHP/laravel/pull/189
+* @curtisblackwell made their first contribution in https://github.com/NativePHP/laravel/pull/215
+* @nexxai made their first contribution in https://github.com/NativePHP/laravel/pull/165
+* @LunashaGit made their first contribution in https://github.com/NativePHP/laravel/pull/249
+* @LukeTowers made their first contribution in https://github.com/NativePHP/laravel/pull/67
+* @meliani made their first contribution in https://github.com/NativePHP/laravel/pull/262
+
+**Full Changelog**: https://github.com/NativePHP/laravel/compare/0.4.0...0.5.0
+
 ## 0.4.0 - 2023-08-09
 
 ### What's Changed

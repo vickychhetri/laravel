@@ -26,6 +26,13 @@ class WindowManager
         ]);
     }
 
+    public function hide($id = null)
+    {
+        return $this->client->post('window/hide', [
+            'id' => $id ?? $this->detectId(),
+        ]);
+    }
+
     public function current()
     {
         return (object) $this->client->get('window/current')->json();
@@ -42,7 +49,7 @@ class WindowManager
 
     public function position($x, $y, $animated = false, $id = null)
     {
-        $this->client->post('window/resize', [
+        $this->client->post('window/position', [
             'id' => $id ?? $this->detectId(),
             'x' => $x,
             'y' => $y,
@@ -61,6 +68,13 @@ class WindowManager
     public function maximize($id = null): void
     {
         $this->client->post('window/maximize', [
+            'id' => $id ?? $this->detectId(),
+        ]);
+    }
+
+    public function reload($id = null): void
+    {
+        $this->client->post('window/reload', [
             'id' => $id ?? $this->detectId(),
         ]);
     }

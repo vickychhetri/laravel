@@ -9,9 +9,9 @@ use Native\Laravel\Concerns\HasVibrancy;
 
 class Window
 {
-    use HasVibrancy;
     use HasDimensions;
     use HasUrl;
+    use HasVibrancy;
 
     protected bool $autoHideMenuBar = false;
 
@@ -42,6 +42,8 @@ class Window
     protected bool $frame = true;
 
     protected string $titleBarStyle = 'default';
+
+    protected array $trafficLightPosition = [];
 
     protected string $title = '';
 
@@ -86,6 +88,13 @@ class Window
     public function titleBarHiddenInset(): self
     {
         return $this->titleBarStyle('hiddenInset');
+    }
+
+    public function trafficLightPosition(int $x, int $y): self
+    {
+        $this->trafficLightPosition = ['x' => $x, 'y' => $y];
+
+        return $this;
     }
 
     public function rememberState(): self
@@ -225,6 +234,7 @@ class Window
             'hasShadow' => $this->hasShadow,
             'frame' => $this->frame,
             'titleBarStyle' => $this->titleBarStyle,
+            'trafficLightPosition' => $this->trafficLightPosition,
             'showDevTools' => $this->showDevTools,
             'vibrancy' => $this->vibrancy,
             'transparency' => $this->transparent,
